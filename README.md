@@ -9,3 +9,7 @@ This repo contains all the custom documentation per-project.  To add a file:
 	and rendering the html documentation.
 3) Edit the html file to your liking.  Any custom javascript or css should be
 	added on your own, _not_ to the DocumentationTemplate folder.
+
+Note: If you want to update the template module in a given documentation project,
+	navigate to the DocumentationTemplate directory of the given project and run:
+	git pull
