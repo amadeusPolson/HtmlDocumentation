@@ -1,3 +1,9 @@
-[submodule "DocumentationTemplate"]
-	path = DocumentationTemplate
+[submodule "BCycle/Migrate existing site/DocumentationTemplate"]
+	path = BCycle/Migrate existing site/DocumentationTemplate
+	url = git@github.com:amadeusPolson/DocumentationTemplate.git
+[submodule "BCycle/Add domain to sitefinity license/DocumentationTemplate"]
+	path = BCycle/Add domain to sitefinity license/DocumentationTemplate
+	url = git@github.com:amadeusPolson/DocumentationTemplate.git
+[submodule "Example/DocumentationTemplate"]
+	path = Example/DocumentationTemplate
 	url = git@github.com:amadeusPolson/DocumentationTemplate.git

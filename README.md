@@ -1,4 +1,11 @@
 Documentation
 =============
 
-This repo contains all the custom documentation projects
+This repo contains all the custom documentation per-project.  To add a file:
+
+1) Copy the html and images folder from ~/Example into your new directory.
+2) Run: git submodule add git@github.com:amadeusPolson/DocumentationTemplate.git.
+	This command will download the most up-to-date resources used for creating
+	and rendering the html documentation.
+3) Edit the html file to your liking.  Any custom javascript or css should be
+	added on your own, _not_ to the DocumentationTemplate folder.
