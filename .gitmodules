@@ -1,0 +1,3 @@
+[submodule "DocumentationTemplate"]
+	path = DocumentationTemplate
+	url = git@github.com:amadeusPolson/DocumentationTemplate.git

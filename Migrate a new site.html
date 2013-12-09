@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- styles -->
+	<link rel="stylesheet" type="text/css" href="css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="css/site.css" />
+	<link rel="stylesheet" type="text/css" href="js/plugins/fancybox/jquery.fancybox.css" />
+	<link rel="stylesheet" type="text/css" href="js/plugins/simplePagination/simplePagination.css" />
+
+	<!-- script libraries -->
+	<script src="js/jquery-1.10.1.min.js"></script>
+	<script src="js/plugins/mousewheel/jquery.mousewheel-3.0.6.pack.js"></script>
+	<script src="js/plugins/fancybox/jquery.fancybox.pack.js"></script>
+	<script src="js/plugins/simplePagination/jquery.simplePagination.js"></script>
+	
+	<!-- custom scripts -->
+	<script src="js/init.js"></script>
+</head>
+<body>
+
+	<h1>Sitefinity: How to migrate a site from scratch</h1>
+	
+	<ul class="pagination" id="top-pagination">
+	</ul>
+	
+	<ul id="steps">
+		<li>
+			<h2>Click 'Manage sites'</h2>
+			<p>
+				First visit <a href="http://sitefinity.bcycle.com/sitefinity">http://sitefinity.bcycle.com/sitefinity</a> 
+				with admin credentials to reach what sitefinity calls 'the dashboard'.  You will then see the site selector 
+				top left.  Click it (#1), then click 'Manage Sites' (#2).
+			</p>
+			<a class="screenshot" href="images/screenshots/Click Manage Sites.png" title="Click Manage Sites">
+				<img src="images/screenshots/Click Manage Sites.png"/>
+			</a>
+		</li>
+	
+		<li>
+			<h2>Click 'Create a site'</h2>
+			<a class="screenshot" href="images/screenshots/Create a site.png" title="Create a site">
+				<img src="images/screenshots/Create a site.png"/>
+			</a>
+		</li>
+	
+		<li>
+			<h2>Enter site info</h2>
+			<ol class="mediumWidth">
+				<li>(#1) - The name of the site is for backend display purposes only.</li>
+				<li>(#2) - Make sure the protocol in is 'https' and that you specify a domain that doesn't already exist.</li>
+				<li>(#3) - Select 'Duplicate pages and settings...' and duplicate from 'Base'.</li>
+				<li>(#4) - If you want to add any languages for this site, and add them here.
+					You are able to add/remove any in the future.</li>
+				<li>(#5) - Click 'Continue'.</li>
+			</ol>
+			<a class="screenshot" href="images/screenshots/Enter site info.png" title="Enter site info">
+				<img src="images/screenshots/Enter site info.png"/>
+			</a>
+		</li>
+	
+		<li>
+			<h2>Configure modules</h2>
+			<p>
+				Make sure to select the 'News', 'Libraries', 'GenericContent', 'FAQs', and 'Forums' modules.  For the
+				Libraries and GenericContent modules, you will need to click 'change' and add the base modules as well.  
+				The second screenshot shows how to do this - just make sure not to change the 'default' library.
+			</p>
+			<a class="screenshot" href="images/screenshots/Configure modules.png" title="Configure modules">
+				<img src="images/screenshots/Configure modules.png"/>
+			</a>
+			<a class="screenshot" href="images/screenshots/Use base libraries.png" title="Use base libraries">
+				<img src="images/screenshots/Use base libraries.png"/>
+			</a>
+		</li>
+	
+		<li>
+			<h2>Make DNS changes</h2>
+			<p>
+				Log into godaddy.com and find the domain manager.  Edit the bcycle.com domain.  You should now see
+				the below screenshot.  Click the DNS Zone File tab (#2), then click [Edit] #3
+			</p>
+			<a class="screenshot" href="images/screenshots/Click edit dns zone file.png" title="Click edit dns zone file">
+				<img src="images/screenshots/Click edit dns zone file.png"/>
+			</a>
+			<p>
+				Now scroll down to the 'cname' section (mapping subdomains to existing domains as opposed to ip addresses).
+				Click 'Quick Add' (#1) and type in whatever url you used for sitefinity (#2).  Map it to 
+				'sitefinity.bcycle.com' (#3).  The TTL doesn't really matter - keep it at 1 hour.  Finally save the zone
+				file (#4).
+			</p>
+			<a class="screenshot" href="images/screenshots/Add dns record.png" title="Add dns record">
+				<img src="images/screenshots/Add dns record.png"/>
+			</a>
+		</li>
+	
+		<li>
+			<h2>Add user roles</h2>
+			<p>
+				Go back to your dashboard and click 'Administration' (#1) then 'Roles' (#2).
+			</p>
+			<a class="screenshot" href="images/screenshots/Click Roles.png" title="Click Roles">
+				<img src="images/screenshots/Click Roles.png"/>
+			</a>
+			<p>
+				At the top click [Create a role], then type in '<city> Backend User' (#1).  Don't change the drop down
+				to any values besides Default.  Then click [Create] (#2).
+			</p>
+			<a class="screenshot" href="images/screenshots/Create city backend role.png" title="Create city backend role">
+				<img src="images/screenshots/Create city backend role.png"/>
+			</a>
+		</li>
+	
+		<li>
+			<h2>Assign role to the new site</h2>
+			<p>
+				Back at the dashboard, click the sites top left to get the drop down, then click 'Manage Sites'.  To the
+				right of your new site click 'Actions' (#1) then click 'Set Permissions' (#2).
+			</p>
+			<a class="screenshot" href="images/screenshots/Click site permissions.png" title="Click site permissions">
+				<img src="images/screenshots/Click site permissions.png"/>
+			</a>
+			<p>
+				Before you can change permissions, you will have to explicitly break them from its current hirearchy.  Click
+				[Break inheritance] (#1) and then you'll see [Change] next to the permission 'Access the site'.  
+				Click [Change] (#3).
+			</p>
+			<a class="screenshot" href="images/screenshots/Change site permissions.png" title="Change site permissions">
+				<img src="images/screenshots/Change site permissions.png"/>
+			</a>
+			<p>
+				Now Select the radio button 'Selected roles or users' (#1) then click [Add roles or users] (#2).
+			</p>
+			<a class="screenshot" href="images/screenshots/Add roles or users.png" title="Add roles or users">
+				<img src="images/screenshots/Add roles or users.png"/>
+			</a>
+			<p>
+				If you'll notice, the role 'Administrators' isn't listed in any of the pages.  In order to get it to show
+				up, type in 'Administrators' in the text box.  Don't select the checkbox - just delete the 'Administrators'
+				text you just typed in.  This is buggy behavior that hopefully sitefinity will resolve in a future revision
+				of their software.
+			</p>
+			<a class="screenshot" href="images/screenshots/Type 'Administrators'.png" title="Type 'Administrators'">
+				<img src="images/screenshots/Type 'Administrators'.png"/>
+			</a>
+			<p>
+				After deleting 'Administrators', you should now see it in the list of roles.  Check it along with the new
+				role you just created in steps 8/9.
+			</p>
+			<a class="screenshot" href="images/screenshots/Select roles.png" title="Select roles">
+				<img src="images/screenshots/Select roles.png"/>
+			</a>
+		</li>
+		
+		<li>
+			<h2>Notify us about updating the database</h2>
+			<p>
+				Ideally this would be a configuration step when setting up the program.  Currently however, we don't
+				have the UI ready to accept some parameters; we need to set these up separately with database scripts.
+				Therefore, we need two things from you:
+			</p>
+			<ul class="list-style">
+				<li>
+					Tell us list of topic/subject/contact e-mails per program.
+				</li>
+				<li>
+					Tell us the sitefinity site name that maps to the existing program.
+				</li>
+			</ul>
+		</li>
+	
+		<li>
+			<h2>Just a note</h2>
+			<p>
+				More buggy behavior that you might see are templates getting stuck.  This shouldn't happen if you strictly 
+				follow this guide, but if you're messing around trying to get things to work sometimes you'll see templates
+				in sites that you don't expect.  It would be bad if someone modified a template for another city accidentally
+				and so I just wanted to point out that if you see this, please let us know so we can run a query to correct
+				the data.  If/when you let us know, please e-mail a screenshot along with the user credentials you were using to
+				access the backend.
+			</p>
+			<a class="screenshot" href="images/screenshots/Sometimes templates get 'stuck'.png" title="Sometimes templates get 'stuck'">
+				<img src="images/screenshots/Sometimes templates get 'stuck'.png"/>
+			</a>
+		</li>
+		
+		<li>
+			<h2>Editing templates - need a second login</h2>
+			<p>
+				Please notice two things in the screenshot.
+			</p>
+			<ul class="list-style-short">
+				<li>We're now using Firefox (in addition to chrome).</li>
+				<li>We selected the 'base' site instead of the new city.</li>
+			</ul>
+			<p>
+				We are about to edit templates and the quickest way to do that is to have two browsers open.  If you need
+				to create another user, then do so giving yourself admin privelages.  You cannot log in to sitefinity
+				using the same user on two separate browsers, and you can't be browsing two separate sections of sitefinity
+				in the same browser - it freaks out. It's also worthy to note editing templates would ideally be done
+				on two separate monitors.
+			</p>
+			<a class="screenshot" href="images/screenshots/Second login go to base site templates.png" title="Second login go to base site templates">
+				<img src="images/screenshots/Second login go to base site templates.png"/>
+			</a>
+		</li>
+		
+		<li>
+			<h2>Create city master template</h2>
+			<p>
+				Back in your original browser, click [Create a template].  You should now see the screen below.  Type in
+				'<city> Master' for the name (#1), select the "Don't use template..." radio button (#2), then click
+				[Create and go to add content] (#3).
+			</p>
+			<a class="screenshot" href="images/screenshots/Create city master template.png" title="Create city master template">
+				<img src="images/screenshots/Create city master template.png"/>
+			</a>
+		</li>
+		
+		<li>
+			<h2>Check the base master template in your second browser</h2>
+			<p>
+				First click the [Layout] tab (#1) as this template doesn't have any content.  Take a look at the layout
+				containers (#2 and #3).  See how they have various '%' marks next to them?  The number of '%' marks is
+				the number of columns that are available for content to be placed in.  Ideally these all add up to 100%,
+				but the custom styling in this project causes some strange designer behavior in sitefinity - don't worry
+				about that though as it's only slightly inconvenient.  The last thing to note is the (custom) next to the
+				percentage marks.  This means that the container settings were modified.  If you modify the settings in
+				a container then revert those modifications back to what the default was, it will still say (custom) fyi.
+				It is very important that if settings were modified in a base template, that you copy those changes
+				into the corresponding <City> template.  It would be incredible if Sitefinity allowed us to make copies
+				of templates, but that functionality is not available.  The last thing to note before the next step, 
+				is that the top container has 3 columns.
+			</p>
+			<a class="screenshot" href="images/screenshots/Master template 'Layout' tab.png" title="Master template 'Layout' tab">
+				<img src="images/screenshots/Master template 'Layout' tab.png"/>
+			</a>
+		</li>
+		
+		<li>
+			<h2>Add a container to the new '<City> Master' template</h2>
+			<p>
+				As the screenshot shows, just click and drag.
+			</p>
+			<a class="screenshot" href="images/screenshots/City master 3 column container.png" title="City master 3 column container">
+				<img src="images/screenshots/City master 3 column container.png"/>
+			</a>
+		</li>
+		
+		<li>
+			<h2>Check settings for Base Master top container</h2>
+			<p>
+				Back in browser #2, click 'Edit' on the container to see the screen below.  Notice the three tabs top
+				right 'Sizes', 'Spaces', and 'Classes'.  Do not worry about editing the sizing percentages.  These will
+				be controlled by the class names set under the 'Classes' tab.
+			</p>
+			<a class="screenshot" href="images/screenshots/master template sizes.png" title="master template sizes">
+				<img src="images/screenshots/master template sizes.png"/>
+			</a>
+		</li>
+		
+		<li>
+			<h2>Modify the container classes</h2>
+			<p>
+				I didn't screenshot the 'spaces' tab, but if there are modifications in that tab then you will have to
+				copy those values over to the new master template container.  This screenshot shows the next tab 'Classes'.
+				You will always see the default naming convention 
+				"sf_<# of columns>cols_<column #>_<selected container width>"
+				Don't modify them even though I don't know they serve any function.  However it would be more work to 
+				explicitly remove them.  Anyway - copy over the classes if any from the base Master container.<br /><br />
+				Just an fyi, the Wrapper textbox here defines a css class which wraps the entire container.  The column text
+				boxes define classes that wrap each column.  We use these css classes to style anything outside of the 
+				sitefinity defaults (things like having a blue background color instead of transparent).
+			</p>
+			<a class="screenshot" href="images/screenshots/City master classes.png" title="City master classes">
+				<img src="images/screenshots/City master classes.png"/>
+			</a>
+		</li>
+		
+		<li>
+			<h2>Another container</h2>
+			<p>
+				Our first container is finished.  Again in our new <City> Base container, move another three column 
+				container below the first.  As in the screenshot, you should see a 'Drop here' yellow box before letting
+				go of the mouse.  I only point this out because sitefinity is very finicky about your mouse placement and
+				it doesn't always make sense.  You'll get used to it the more you use sitefinity - it's not too big a hassle.
+			</p>
+			<a class="screenshot" href="images/screenshots/City master 2nd three column container.png" title="City master 2nd three column container">
+				<img src="images/screenshots/City master 2nd three column container.png"/>
+			</a>
+			<p>
+				Now we modify the sizes.  I took a screenshot of this to clarify what I meant in Step 22.  If you'll notice
+				this container in the Base Master template, the values only add up to 99.  Here I just do 9/50 and the third
+				value auto-sizes to 41.  This is fine.  Now move on and change any Spaces and Classes that need to be modified.
+			</p>
+			<a class="screenshot" href="images/screenshots/City master sizes.png" title="City master sizes">
+				<img src="images/screenshots/City master sizes.png"/>
+			</a>
+		</li>
+		
+		<li>
+			<h2>Sitefinity design behavior</h2>
+			<p>
+				Back in the Base Master template, notice the child containers.  Sitefinity doesn't make this obvious until you 
+				mouse over the parent container (see screenshot).  See how the background is a light red for all its children?
+				Normally there's a white space between containers.
+			</p>
+			<a class="screenshot" href="images/screenshots/Master mouse-over child containers.png" title="Master mouse-over child containers">
+				<img src="images/screenshots/Master mouse-over child containers.png"/>
+			</a>
+			<p>
+				To make a child container, place a container inside an existing container.  To give that child a sibling, place
+				another container below that one (see screenshot).
+			</p>
+			<a class="screenshot" href="images/screenshots/City master drop below child container makes it sibling.png" title="City master drop below child container makes it sibling">
+				<img src="images/screenshots/City master drop below child container makes it sibling.png"/>
+			</a>
+		</li>
+		
+		<li>
+			<h2>More odd sitefinity behavior</h2>
+			<p>
+				So to add a sibling container you place it below an existing child container correct?  Well then how do you
+				add a container below the parent?  The only work-around I've seen is to place a container above the parent
+				as seen in the screenshot.
+			</p>
+			<a class="screenshot" href="images/screenshots/City master drop between then rearrange to not make sibling.png" title="City master drop between then rearrange to not make sibling">
+				<img src="images/screenshots/City master drop between then rearrange to not make sibling.png"/>
+			</a>
+			<p>
+				Then click and drag the parent above that container.
+			</p>
+			<a class="screenshot" href="images/screenshots/City master result of rearrangement.png" title="City master result of rearrangement">
+				<img src="images/screenshots/City master result of rearrangement.png"/>
+			</a>
+		</li>
+		
+		<li>
+			<h2>Set the theme and publish</h2>
+			<p>
+				You should have finished placing all the layout containers and modifying all their properties at this point.
+				You'll notice however that the header nor the footer are blue.  This is because those custom css classes
+				you copied over don't exist yet.  Click [Theme] (#1) then select 'DefaultTheme' from the dropdown to give
+				the template a theme - the custom classes now exist and your footer/header should turn blue.
+			</p>
+			<a class="screenshot" href="images/screenshots/City master change theme.png" title="City master change theme">
+				<img src="images/screenshots/City master change theme.png"/>
+			</a>
+			<p>
+				Finally you can publish the template.
+			</p>
+			<a class="screenshot" href="images/screenshots/City master publish.png" title="City master publish">
+				<img src="images/screenshots/City master publish.png"/>
+			</a>
+		</li>
+		
+		<li>
+			<h2>Create '<City> Base' template</h2>
+			<p>
+				Now it's time to create the city base template.  The name should be '<City> Base' (#1), base it off of
+				the master template you just created (#2), then click [Create and go to add content] (#3).
+			</p>
+			<a class="screenshot" href="images/screenshots/Create city base template.png" title="Create city base template">
+				<img src="images/screenshots/Create city base template.png"/>
+			</a>
+		</li>
+		
+		<li>
+			<h2>No need to edit layout containers</h2>
+			<p>
+				Back in browser #2 - open up the 'City Base' template and click the [Layout] tab top right.  Notice that the layout
+				elements imported from the master template are not editable.  This is a good thing, because you should not need to edit
+				the layout at this time.
+			</p>
+			<a class="screenshot" href="images/screenshots/Original city base layout no editable containers.png" title="Original city base layout no editable containers">
+				<img src="images/screenshots/Original city base layout no editable containers.png"/>
+			</a>
+		</li>
+		
+		<li>
+			<h2>Edit content block</h2>
+			<p>
+				Staying in browser #2, click on the 'Back to Templates' link. On the templates page click on the City Base template.  
+				Find the content block with the title text "<City name>" and click 'edit'.  Click the [HTML] tab (#1) and you should 
+				see the screen below.  Copy this text.
+			</p>
+			<a class="screenshot" href="images/screenshots/Original city base edit content block city title.png" title="Original city base edit content block city title">
+				<img src="images/screenshots/Original city base edit content block city title.png"/>
+			</a>
+			<p>
+				Now go to browser #1, make sure you're on the content tab, and drag over a content block to the small
+				layout container top left (that's the container where the city title goes).  Click 'Enter content',
+				switch to the HTML tab, and enter in the content.  Replace "&lt;City Name &gt;" with whatever your city
+				title should be.  Your screen should now look similar to the one below.
+			</p>
+			<a class="screenshot" href="images/screenshots/City base edit content block city title.png" title="City base edit content block city title">
+				<img src="images/screenshots/City base edit content block city title.png"/>
+			</a>
+		</li>
+		
+		<li>
+			<h2>City base choose logo</h2>
+			<p>
+				Now drag over an image widget to the layout container next to the content block.  Keep in mind the
+				designer view doesn't always look like the actual view of the page.  Click 'Select an Image', then
+				at the top click 'From already uploaded' (#1) -> click 'Default source' top right (#2) and choose
+				'Base Libraries' (#3).  You should now be able to choose the bcycle logo.  If you wanted a different
+				logo for that city, you would upload a different image into your city's library of images, then select
+				that image instead.
+			</p>
+			<a class="screenshot" href="images/screenshots/City base choose logo.png" title="City base choose logo">
+				<img src="images/screenshots/City base choose logo.png"/>
+			</a>
+			<p>
+				After you've selected the logo, click the margin option at the bottom.  You should now see some text
+				boxes for margin input.  Whenever you're copying over an image from a template, always check these
+				boxes to make sure you don't miss anything.
+			</p>
+			<a class="screenshot" href="images/screenshots/Original city base image margins.png" title="Original city base image margins">
+				<img src="images/screenshots/Original city base image margins.png"/>
+			</a>
+		</li>
+		
+		<li>
+			<h2>Copy navigation</h2>
+			<p>
+				Back in browser #2, click 'Edit' on the navigation widget in the header.  You should see a screen similar
+				to the one below.  Make sure when you add the navigation widget to the new city base template, to choose
+				all the exact same options.
+			</p>
+			<a class="screenshot" href="images/screenshots/Original city navigation options.png" title="Original city navigation options">
+				<img src="images/screenshots/Original city navigation options.png"/>
+			</a>
+		</li>
+		
+		<li>
+			<h2>Add sponsor links in footer</h2>
+			<p>
+				When adding the sponsor links in the footer - first choose an image.
+			</p>
+			<a class="screenshot" href="images/screenshots/City base sponsor link existing image.png" title="City base sponsor link existing image">
+				<img src="images/screenshots/City base sponsor link existing image.png"/>
+			</a>
+			<p>
+				The below screenshot shows how to do it for one of the existing sponsors.
+			</p>
+			<a class="screenshot" href="images/screenshots/City base create image link.png" title="City base create image link">
+				<img src="images/screenshots/City base create image link.png"/>
+			</a>
+			<p>
+				Now highlight the image (I think simply left clicking the image so that it's selected works too) - Then click
+				the hyperlink manager button as seen below.  You should then be able to add a url to which the link goes to.
+			</p>
+			<a class="screenshot" href="images/screenshots/City base create image link.png" title="City base create image link">
+				<img src="images/screenshots/City base create image link.png"/>
+			</a>
+		</li>
+		
+		<li>
+			<h2>Change page templates</h2>
+			<p>
+				The previous steps should have given you enough information to copy over all the templates successfully.
+				You should now have all new templates for the migrated city.  The below screenshot shows you where sitefinity
+				tries to tell you how many pages are referencing the template.  These are commonly incorrect - so don't put
+				too much stock into the values.  Again, this is odd sitefinity behavior that we can manually update in the database
+				if for some reason it becomes a problem.  One instance of it being a problem would be the inability to delete a template
+				because sitefinity thinks it's being referenced by a page.
+			</p>
+			<a class="screenshot" href="images/screenshots/Template page & site associations wrong.png" title="Template page & site associations wrong">
+				<img src="images/screenshots/Template page & site associations wrong.png"/>
+			</a>
+			<p>
+				Anyway, you're now ready to go to the 'Pages' section of the dashboard, click 'Actions' (#1) then 'Template' (#2).
+			</p>
+			<a class="screenshot" href="images/screenshots/City change page templates.png" title="City change page templates">
+				<img src="images/screenshots/City change page templates.png"/>
+			</a>
+			<p>
+				After you choose the corresponding new template, it will give you a 'warning' dialog.  Just click continue.
+			</p>
+			<a class="screenshot" href="images/screenshots/Change template warning.png" title="Change template warning">
+				<img src="images/screenshots/Change template warning.png"/>
+			</a>
+		</li>
+		
+		<li>
+			<h2>Re-format page content</h2>
+			<p>
+				So sitefinity has no way of knowing the templates you just changed for all these new pages have the exact
+				same layout.  For instance, you could change the template from 'master' to a blank template.  Because
+				of this, sitefinity has to temporarily disable all the content for the page, making a draft.  If you click
+				on one of the pages after you modified its template, you should see a screen similar to the one below.  Notice 
+				how the content is greyed out.
+			</p>
+			<a class="screenshot" href="images/screenshots/Page with new template.png" title="Page with new template">
+				<img src="images/screenshots/Page with new template.png"/>
+			</a>
+			<p>
+				For every page in the new city then, you have to move the layout/content from its disabled state, to where it should
+				be.  Again, the easiest way to do this is to have two browsers open.  After you're done reformatting all the 
+				layout/content, [Publish] the page and it should be good.  Once you're done with every page, your site
+				should be ready for use.
+			</p>
+			<a class="screenshot" href="images/screenshots/Compare to existing.png" title="Compare to existing">
+				<img src="images/screenshots/Compare to existing.png"/>
+			</a>
+		</li>
+		
+	</ul>
+	
+	<ul class="pagination" id="bottom-pagination">
+	</ul>
+	
+</body>
+</html>
