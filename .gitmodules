@@ -4,3 +4,6 @@
 [submodule "Example/DocumentationTemplate"]
 	path = Example/DocumentationTemplate
 	url = git@github.com:amadeusPolson/DocumentationTemplate.git
+[submodule "NamasteSolar/DocumentationTemplate"]
+	path = NamasteSolar/DocumentationTemplate
+	url = git@github.com:amadeusPolson/DocumentationTemplate.git
