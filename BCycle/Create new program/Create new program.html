@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- styles -->
+	<link rel="stylesheet" type="text/css" href="DocumentationTemplate/css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="DocumentationTemplate/css/site.css" />
+	<link rel="stylesheet" type="text/css" href="DocumentationTemplate/js/plugins/fancybox/jquery.fancybox.css" />
+	<link rel="stylesheet" type="text/css" href="DocumentationTemplate/js/plugins/simplePagination/simplePagination.css" />
+
+	<!-- script libraries -->
+	<script src="DocumentationTemplate/js/jquery-1.10.1.min.js"></script>
+	<script src="DocumentationTemplate/js/plugins/mousewheel/jquery.mousewheel-3.0.6.pack.js"></script>
+	<script src="DocumentationTemplate/js/plugins/fancybox/jquery.fancybox.pack.js"></script>
+	<script src="DocumentationTemplate/js/plugins/simplePagination/jquery.simplePagination.js"></script>
+	
+	<!-- custom scripts -->
+	<script src="DocumentationTemplate/js/init.js"></script>
+</head>
+<body>
+
+	<h1>How to create a new program</h1>
+	
+	<!-- The init js function will hide the pagination and page-label if there aren't enough steps to warrant it -->
+	<h2 id="page-label">Page 1</h2>
+	
+	<!-- don't modify this, the pagination is generated -->
+	<ul class="pagination" id="top-pagination">
+	</ul>
+	
+	<ul id="steps">
+		<!-- Copy this <li> element and paste to add a step -->
+		<li>
+			<h2>Log In</h2>
+			<!-- A single step can contain multiple paragraph elements and screenshots -->
+			<p>
+				Visit <a href="https://admin.bcycle.com">https://admin.bcycle.com</a> - then log in using your admin credentials.  
+				On the next screen, just select any program.
+			</p>
+			<a class="screenshot" href="images/screenshots/log in.png" title="Log In">
+				<img src="images/screenshots/log in.png"/>
+			</a>
+		</li>		
+		<li>
+			<h2>Enter in program info</h2>
+			<!-- A single step can contain multiple paragraph elements and screenshots -->
+			<p>
+				Click 'Programs' (#1), then 'Add new record' (#2), and you should see the popup (#3).
+				Below should be screenshots of the entire program entry - taken in case it changes
+				between the time of this authoring and your reading it.
+			</p>
+			<a class="screenshot" href="images/screenshots/Enter program info1.png" title="Enter Program Info">
+				<img src="images/screenshots/Enter program info1.png"/>
+			</a>
+			<a class="screenshot" href="images/screenshots/Enter program info2.png" title="Enter Program Info">
+				<img src="images/screenshots/Enter program info2.png"/>
+			</a>
+			<a class="screenshot" href="images/screenshots/Enter program info3.png" title="Enter Program Info">
+				<img src="images/screenshots/Enter program info3.png"/>
+			</a>
+			<h3>Explanation of what to enter</h3>
+			<p>
+				Note: An asterisk means the field is required.  Also note that not all data will be known in advance.  
+				If required data is missing, put in fake data in order to save the program.  The admins are aware
+				of this.
+			</p>
+			<ol class="mediumWidth list-style">
+				<li>
+					Contact info - Administrative person in charge of the city and address information which used 
+					to be displayed on the dotnetnuke site under 'Contact Us'.  In sitefinity however, it's just an 
+					editable content block.  Name, Street, and City are the only required fields out of this section.
+				</li>
+				<li>Lock ID - Leave blank for now, honestly not sure what it's for.</li>
+				<li>*Merchant Name & Transaction Key - use fake data until the correct values are known(FakeName//123FakeKey).</li>
+				<li>Use Test Server - Charges/refunds will be sent to the auth net test server and not their live system.</li>
+				<li>Program Group - Unused. leave blank.</li>
+				<li>*Domain Name - self explanatory.</li>
+				<li>Website Header Image - Not used in sitefinity.</li>
+				<li>Kiosk Time Zone / Display Of Units / Culture - self explanatory.</li>
+				<li>*Overdue Bike Threshold / Bike Inactivity Threshold / Approaching Membership Expiration Threshold - Self Explanatory</li>
+				<li>Program Model - Should be on initial questionnaire (whether b-cycle uses that questionnaire internally is another matter).</li>
+				<li>Walkup Purchase Limit - self explanatory.</li>
+				<li>Public Text - Text that gets shown on the following page (when hovering over the pin I believe): http://sitefinity.bcycle.com/city-locations/</li>
+				<li>Active - A flag in tblProgram which should indicate whether the program is active. This does affect whether the program is shown in the DNN dropdown. Not sure if it was used in Sitefinity.</li>
+				<li>Allow User Signup at Kiosk / Wi-MM GPS - Self explanatory.</li>
+				<li>Open System Up - Restores all kiosks to their regular operating schedule.</li>
+				<li>Shut System Down - Shuts down all kiosks in the program.  During this time, the kiosks will not be operational and only bike returns will be supported.</li>
+				<li>Show Zip Code / Show Promo Code - Whether or not a zip/promo code is asked for when signing up at a kiosk.</li>
+				<li>*Map Settings - Settings necessary in order to use the google maps api.  In order to get the latitude/longitude of a given point, go to gmaps and left click a point on the map.  A box should appear under the search bar with the lat/lon coordinates.  If that doesn't work, you're going to have to google how to do it because the method changed.</li>
+				<li>Default Fees - Leave as is until a city admin chooses to change it.</li>
+				<li>Grace Period Minutes - Number of minutes after a given half hour before a user is charged for the next half hour overage fee</li>
+			</ol>
+			<p>Well, you're done.  Hit that save button.</p>
+		</li>
+		<li>
+			<h2>Next Step</h2>
+			<p>Now that a program exists, you can follow the instructions on the document 'Migrating an existing site' to create the sitefinity site.</p>
+		</li>
+	</ul>
+
+	<!-- don't modify this, the pagination is generated -->
+	<ul class="pagination" id="bottom-pagination">
+	</ul>
+	
+</body>
+</html>

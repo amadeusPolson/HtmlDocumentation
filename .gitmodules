@@ -7,3 +7,6 @@
 [submodule "NamasteSolar/DocumentationTemplate"]
 	path = NamasteSolar/DocumentationTemplate
 	url = git@github.com:amadeusPolson/DocumentationTemplate.git
+[submodule "BCycle/Create new program/DocumentationTemplate"]
+	path = BCycle/Create new program/DocumentationTemplate
+	url = git@github.com:amadeusPolson/DocumentationTemplate.git

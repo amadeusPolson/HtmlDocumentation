@@ -1,0 +1,1 @@
+Open either 'How to use the spotlight widget' or 'How to use the video thumbnail popup widget' in your favorite browser.  If opened in IE, you may have to allow blocked content for it to function properly.
