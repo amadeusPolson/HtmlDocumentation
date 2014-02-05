@@ -158,16 +158,28 @@
 			<p>
 				Ideally this would be a configuration step when setting up the program.  Currently however, we don't
 				have the UI ready to accept some parameters; we need to set these up separately with database scripts.
-				Therefore, we need two things from you:
+				Therefore, mapping the sitefinity site to the existing program requires manual database work.  Log into
+				whatever database server has the active sitefinity database (Bcycle_Sitefinity) and run:
 			</p>
-			<ul class="list-style">
-				<li>
-					Tell us list of topic/subject/contact e-mails per program.
-				</li>
-				<li>
-					Tell us the sitefinity site name that maps to the existing program.
-				</li>
-			</ul>
+			<p>
+				select id
+				from sf_sites s
+				where s.live_url like '%&lt;whatever the live url was configured to be&gt;%'
+			</p>
+			<p>
+				With that guid, you can then log into the whatever database server has the active enterprise database
+				(Bcycle_Enterprise) and run:
+			</p>
+			<p>
+				select p.zProgramId
+				from tblProgram p
+				where p.zName like '%&lt;configured program name&gt;%'
+			</p>
+			<p> to get the program id of your city.  Then:
+			<p>
+				insert FrontEnd.SFSiteToProgramMappings
+				values (&lt;sitefinity site guid&gt;, &lt;program id&gt;, &lt;any notes you want to put for this program - unnecessary&gt;)
+			</p>
 		</li>
 	
 		<li>
